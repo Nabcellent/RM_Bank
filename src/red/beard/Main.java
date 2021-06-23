@@ -13,3 +13,10 @@ public class Main {
         });
     }
 }
+
+
+/*
+rootPanel - 1E1F31 - Dark blue
+#B81283 - Magenta
+#B2BED4 - Light Blue
+*/

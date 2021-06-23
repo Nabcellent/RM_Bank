@@ -7,7 +7,8 @@ import java.sql.*;
 
 public class User {
     private int id, phone;
-    private String firstName, lastName, gender, email, password;
+    private String password;
+    private final String  firstName, lastName, gender, email;
 
     public User(String firstName, String lastName, String gender, String email, String password) {
         this.firstName = firstName;
@@ -112,6 +113,10 @@ public class User {
         }
 
         return false;
+    }
+
+    public int getAccNo() {
+        return new Account(this.id).getAccNo();
     }
 
     /*public User authenticate() {

@@ -5,8 +5,6 @@ import red.beard.helpers.Mysql;
 import red.beard.models.User;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -15,10 +13,12 @@ public class Login extends JFrame {
     private JPanel rootPanel;
     private JTextField txtEmail;
     private JButton signInButton;
-    private JTextField pwdPassword;
+    private JPasswordField pwdPassword;
     private JButton signUpButton;
     private JButton btnXD;
+    private JPanel headerPanel;
     private String errorMsg = "Something went wrong.";
+    private String email, password;
     User sessionUser;
 
     public Login() {
@@ -26,6 +26,8 @@ public class Login extends JFrame {
         setTitle("Registration Form");
 
         signInButton.addActionListener(e -> {
+            getFormValues();
+
             if(isValidForm()) {
                 if(authenticateLogin()) {
                     Help.openFrame(new Index(sessionUser), this);
@@ -41,9 +43,6 @@ public class Login extends JFrame {
     }
 
     private boolean isValidForm() {
-        String email = txtEmail.getText();
-        String password = pwdPassword.getText();
-
         if(email.isEmpty() || password.isEmpty()) {
             this.errorMsg = "Please fill in all fields!";
             return false;
@@ -53,9 +52,6 @@ public class Login extends JFrame {
     }
 
     private boolean authenticateLogin() {
-        String email = txtEmail.getText();
-        String password = pwdPassword.getText();
-
         Connection link = Mysql.connectDb();
 
         String verifyLogin = "SELECT * FROM users WHERE email = '" + email + "' AND password = '" + password + "' LIMIT 1";
@@ -78,11 +74,15 @@ public class Login extends JFrame {
                 throw new Exception("Invalid Credentials");
             }
         } catch (Exception e) {
-            e.getCause();
-            e.printStackTrace();
+            System.out.println(e.getMessage());
             errorMsg = e.getMessage();
 
             return false;
         }
+    }
+
+    public void getFormValues() {
+        this.email = txtEmail.getText();
+        this.password = String.valueOf(pwdPassword.getPassword());
     }
 }
