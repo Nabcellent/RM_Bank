@@ -26,7 +26,7 @@ public class Register extends JFrame {
                 User newUser = new User(firstName, lastName, gender, email, password);
 
                 try {
-                    newUser.create();
+                    newUser.create(this);
 
                     JOptionPane.showMessageDialog(this, "New account created successfully! Proceed to login.");
                     Help.openFrame(new Login(), this);

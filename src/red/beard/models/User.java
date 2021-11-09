@@ -27,7 +27,7 @@ public class User {
         this.phone = phone;
     }
 
-    public void create() {
+    public void create(JFrame parentComponent) {
         Connection link = Mysql.connectDb();
 
         String sql = "INSERT INTO users (first_name, last_name, gender, email, password, created_at) " +
@@ -54,12 +54,13 @@ public class User {
                 accStatement.executeUpdate(sql);
             }
 
-        } catch (SQLException se) {
-            se.printStackTrace();
+        } catch (SQLException qe) {
+            qe.printStackTrace();
+            JOptionPane.showMessageDialog(parentComponent, qe.getMessage());
         } catch (Exception e) {
             e.getCause().printStackTrace();
+            JOptionPane.showMessageDialog(parentComponent, e.getMessage());
         }
-
     }
 
     public boolean updateProfile(int phone, String firstName, String lastName, String email, JFrame parentComponent) {

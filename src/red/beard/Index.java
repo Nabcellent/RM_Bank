@@ -5,8 +5,6 @@ import red.beard.models.Account;
 import red.beard.models.User;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.time.LocalTime;
 
 public class Index extends JFrame {

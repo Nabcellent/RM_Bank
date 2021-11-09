@@ -112,7 +112,7 @@ public class Help {
     }
 
     public static void openFrame(JFrame frame) {
-        frame.setSize(500, 400);
+        frame.setSize(500, 500);
         frame.setLocationRelativeTo(null);
         frame.setUndecorated(true);
         frame.setVisible(true);

@@ -22,7 +22,8 @@
           <tabbedpane id="f30d2" binding="tabbedPane1" default-binding="true">
             <constraints border-constraint="Center"/>
             <properties>
-              <foreground color="-5062956"/>
+              <font size="14" style="1"/>
+              <foreground color="-1"/>
             </properties>
             <border type="none"/>
             <children>
